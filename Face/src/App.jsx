@@ -2,25 +2,10 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { arc } from "d3";
-
-const mouthRadius = 40;
-const mouthWidth = 2;
-
-const mouthArc = arc()
-  .innerRadius(mouthRadius)
-  .outerRadius(mouthRadius + mouthWidth)
-  .startAngle(Math.PI / 2)
-  .endAngle((Math.PI * 3) / 2);
+import { Face } from "./Face.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
-  const width = 960;
-  const height = 150;
-  const strokeWidth = 2;
-  const eye = 15;
-  const eyeOffsetX = 40;
-  const eyeOffsetY = 25;
 
   return (
     <div className="bod">
@@ -44,19 +29,16 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <svg height={height} width={width}>
-        <g transform={`translate(${width / 2},${height / 2})`}>
-          <circle
-            r={height / 2 - strokeWidth / 2}
-            fill="yellow"
-            stroke="white"
-            stroke-width={strokeWidth}
-          />
-          <circle cx={-eyeOffsetX} cy={-eyeOffsetY} r={eye} fill="#F1C27D" />
-          <circle cx={+eyeOffsetX} cy={-eyeOffsetY} r={eye} fill="#F1C27D" />
-          <path d={mouthArc()} fill="black" />
-        </g>
-      </svg>
+      <Face
+        width={960}
+        height={150}
+        strokeWidth={2}
+        eye={15}
+        eyeOffsetX={40}
+        eyeOffsetY={25}
+        mouthRadius={40}
+        mouthWidth={2}
+      />
     </div>
   );
 }
